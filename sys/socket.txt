@@ -201,10 +201,13 @@ ifreq {
 	ifr_ifru	ifr_ifru
 }
 
-# TODO: use strings
-devname {
-	devname         array[int8, IFNAMSIZ]
-}
+# TODO: add "syzN" devnames (per executor)
+ifnames = "lo"
+
+devname [
+	generic         array[int8, IFNAMSIZ]
+	ethernet	string[ifnames, IFNAMSIZ]
+]
 
 ifr_ifru [
 	ifru_addrs	sockaddr
